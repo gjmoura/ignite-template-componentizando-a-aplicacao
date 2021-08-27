@@ -10,16 +10,16 @@ interface GenreResponseProps {
 interface SideBarProps {
   genres: GenreResponseProps[];
   selectedGenreId: number;
-  onClick: any;
+  handleClickButton: (id: number) => void;
 }
 
-export function SideBar(props: SideBarProps, selectedGenreId: number, handleClickButton: any){ 
+export function SideBar({genres, selectedGenreId, handleClickButton}: SideBarProps){ 
   return (
     <nav className="sidebar">
       <span>Watch<p>Me</p></span>
 
       <div className="buttons-container">
-        {props.genres.map(genre => (
+        {genres.map(genre => (
           <Button
             key={String(genre.id)}
             title={genre.title}
@@ -33,3 +33,4 @@ export function SideBar(props: SideBarProps, selectedGenreId: number, handleClic
     </nav>
   )
 }
+
